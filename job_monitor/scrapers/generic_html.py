@@ -24,7 +24,7 @@ HEADERS = {
 }
 MIN_TEXT_LEN = 4
 MAX_TEXT_LEN = 120
-SKIP_SCHEMES = ("mailto:", "javascript:", "tel:", "#")
+SKIP_SCHEMES = ("mailto:", "javascript:", "tel:")
 
 
 def fetch(company):
@@ -37,7 +37,7 @@ def fetch(company):
     seen_hrefs = set()
     for a in soup.find_all("a", href=True):
         href = a["href"].strip()
-        if not href or href.startswith(SKIP_SCHEMES):
+        if not href or href == "#" or href.startswith(SKIP_SCHEMES):
             continue
         text = " ".join(a.get_text(separator=" ").split()).strip()
         if not (MIN_TEXT_LEN <= len(text) <= MAX_TEXT_LEN):

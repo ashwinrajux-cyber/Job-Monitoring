@@ -977,5 +977,13 @@
     "identifier": "https://www.chargebee.com/careers/",
     "career_page": "https://www.chargebee.com/careers/",
     "note": "unverified - Nuxt SPA site links only to LinkedIn Jobs"
+  },
+  {
+    "name": "Setign (Test Site)",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://sameepleee.vercel.app/",
+    "career_page": "https://sameepleee.vercel.app/",
+    "note": "personal test site for verifying end-to-end job detection"
   }
 ]
