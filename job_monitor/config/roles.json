@@ -1,0 +1,103 @@
+{
+  "categories": [
+    {
+      "key": "product_design_ux",
+      "label": "Product Design & UX",
+      "enabled": true,
+      "include_keywords": [
+        "product designer",
+        "senior product designer",
+        "staff product designer",
+        "principal product designer",
+        "lead product designer",
+        "ux designer",
+        "ui/ux designer",
+        "ui ux designer",
+        "ux/ui designer",
+        "interaction designer",
+        "experience designer",
+        "user experience designer",
+        "product design lead",
+        "design systems designer",
+        "design system designer"
+      ],
+      "exclude_keywords": [
+        "engineer",
+        "developer",
+        "qa ",
+        "quality assurance",
+        "devops",
+        "marketing",
+        "recruiter",
+        "sourcer",
+        "sales",
+        "finance",
+        "accountant",
+        "hr ",
+        "human resources",
+        "customer support",
+        "customer success",
+        "operations manager",
+        "solutions consultant"
+      ]
+    },
+    {
+      "key": "ux_researcher",
+      "label": "UX Researcher",
+      "enabled": false,
+      "include_keywords": [
+        "ux researcher",
+        "user researcher",
+        "design researcher",
+        "user experience researcher"
+      ],
+      "exclude_keywords": []
+    },
+    {
+      "key": "product_manager",
+      "label": "Product Manager",
+      "enabled": false,
+      "include_keywords": [
+        "product manager",
+        "senior product manager",
+        "group product manager",
+        "principal product manager"
+      ],
+      "exclude_keywords": ["engineer"]
+    },
+    {
+      "key": "design_manager",
+      "label": "Design Manager",
+      "enabled": false,
+      "include_keywords": [
+        "design manager",
+        "head of design",
+        "director of design",
+        "vp of design",
+        "design director"
+      ],
+      "exclude_keywords": []
+    },
+    {
+      "key": "visual_designer",
+      "label": "Visual Designer",
+      "enabled": false,
+      "include_keywords": ["visual designer", "brand designer", "graphic designer"],
+      "exclude_keywords": []
+    },
+    {
+      "key": "service_designer",
+      "label": "Service Designer",
+      "enabled": false,
+      "include_keywords": ["service designer"],
+      "exclude_keywords": []
+    },
+    {
+      "key": "motion_designer",
+      "label": "Motion Designer",
+      "enabled": false,
+      "include_keywords": ["motion designer", "motion graphics designer"],
+      "exclude_keywords": []
+    }
+  ]
+}

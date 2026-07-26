@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Airbnb",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "airbnb",
+    "career_page": "https://careers.airbnb.com/"
+  },
+  {
+    "name": "Notion",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "notion",
+    "career_page": "https://www.notion.so/careers"
+  },
+  {
+    "name": "Rippling",
+    "enabled": true,
+    "source_type": "lever",
+    "identifier": "rippling",
+    "career_page": "https://www.rippling.com/careers"
+  },
+  {
+    "name": "Visa",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "Visa",
+    "career_page": "https://jobs.smartrecruiters.com/Visa"
+  },
+  {
+    "name": "Salesforce",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "salesforce",
+      "wd_host": "wd12",
+      "site": "External_Career_Site"
+    },
+    "career_page": "https://careers.salesforce.com/"
+  }
+]
