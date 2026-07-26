@@ -13,14 +13,14 @@ API_BASE = "https://api.telegram.org"
 
 
 def _bot_token():
-    token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
     if not token:
         raise RuntimeError("TELEGRAM_BOT_TOKEN environment variable is not set")
     return token
 
 
 def _chat_id():
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
     if not chat_id:
         raise RuntimeError("TELEGRAM_CHAT_ID environment variable is not set")
     return chat_id

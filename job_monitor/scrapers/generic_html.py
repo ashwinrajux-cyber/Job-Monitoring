@@ -17,7 +17,11 @@ import requests
 from bs4 import BeautifulSoup
 
 TIMEOUT = 15
-HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; job-monitor/1.0)"}
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+                  "(KHTML, like Gecko) Chrome/120.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+}
 MIN_TEXT_LEN = 4
 MAX_TEXT_LEN = 120
 SKIP_SCHEMES = ("mailto:", "javascript:", "tel:", "#")
