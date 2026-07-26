@@ -1,124 +1,981 @@
 [
-  {"name": "Tiger Analytics", "enabled": true, "source_type": "generic_html", "identifier": "https://apply.workable.com/tiger-analytics/", "career_page": "https://apply.workable.com/tiger-analytics/", "note": "uses Workable ATS, not one of the 5 structured source_types"},
-  {"name": "Mu Sigma", "enabled": true, "source_type": "generic_html", "identifier": "https://www.mu-sigma.com/career/", "career_page": "https://www.mu-sigma.com/career/", "note": "unverified - could not confirm a live structured source"},
-  {"name": "LatentView Analytics", "enabled": true, "source_type": "generic_html", "identifier": "https://www.latentview.com/career/", "career_page": "https://www.latentview.com/career/", "note": "unverified - could not confirm a live structured source"},
-  {"name": "Fractal Analytics", "enabled": true, "source_type": "workday", "identifier": {"tenant": "fractal", "wd_host": "wd1", "site": "Careers"}, "career_page": "https://fractal.wd1.myworkdayjobs.com/Careers"},
-  {"name": "Tredence", "enabled": true, "source_type": "generic_html", "identifier": "https://tredence.ripplehire.com/candidate/careers", "career_page": "https://tredence.ripplehire.com/candidate/careers", "note": "unverified - could not confirm a live structured source"},
-  {"name": "Quantiphi", "enabled": true, "source_type": "workday", "identifier": {"tenant": "quantiphi", "wd_host": "wd1", "site": "Careers_at_Quantiphi"}, "career_page": "https://quantiphi.wd1.myworkdayjobs.com/Careers_at_Quantiphi"},
-  {"name": "Course5 Intelligence", "enabled": true, "source_type": "generic_html", "identifier": "https://www.course5i.com/careers/", "career_page": "https://www.course5i.com/careers/", "note": "unverified - could not confirm a live structured source"},
-  {"name": "EXL Analytics", "enabled": true, "source_type": "generic_html", "identifier": "https://www.exlservice.com/careers", "career_page": "https://www.exlservice.com/careers", "note": "unverified - could not confirm a live structured source"},
-  {"name": "FourKites", "enabled": true, "source_type": "greenhouse", "identifier": "fourkites", "career_page": "https://www.fourkites.com/careers/"},
-  {"name": "project44", "enabled": true, "source_type": "greenhouse", "identifier": "project44", "career_page": "https://www.project44.com/careers/"},
-  {"name": "Blue Yonder", "enabled": true, "source_type": "workday", "identifier": {"tenant": "jda", "wd_host": "wd5", "site": "JDA_Careers"}, "career_page": "https://careers.blueyonder.com/us/en/search-results"},
-  {"name": "Manhattan Associates", "enabled": true, "source_type": "workday", "identifier": {"tenant": "manh", "wd_host": "wd5", "site": "External"}, "career_page": "https://www.manh.com/about-us/careers"},
-  {"name": "Kinaxis", "enabled": true, "source_type": "generic_html", "identifier": "https://careers-kinaxis.icims.com/", "career_page": "https://www.kinaxis.com/en/careers", "note": "uses iCIMS ATS, not one of the 5 structured source_types"},
-  {"name": "o9 Solutions", "enabled": true, "source_type": "workday", "identifier": {"tenant": "o9solutions", "wd_host": "wd5", "site": "o9SolutionsExternal"}, "career_page": "https://o9solutions.wd5.myworkdayjobs.com/o9SolutionsExternal"},
-  {"name": "E2open", "enabled": true, "source_type": "generic_html", "identifier": "https://www.e2open.com/jobs/", "career_page": "https://www.e2open.com/jobs/", "note": "unverified - could not confirm a live structured source"},
-  {"name": "Oracle", "enabled": true, "source_type": "generic_html", "identifier": "https://www.oracle.com/careers/", "career_page": "https://www.oracle.com/careers/", "note": "proprietary Oracle Recruiting Cloud, not one of the 5 structured source_types"},
-  {"name": "SAP", "enabled": true, "source_type": "generic_html", "identifier": "https://jobs.sap.com/", "career_page": "https://jobs.sap.com/", "note": "uses SuccessFactors, not one of the 5 structured source_types"},
-  {"name": "Infor", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.infor.com/", "career_page": "https://careers.infor.com/", "note": "uses PinpointHQ ATS, not one of the 5 structured source_types"},
-  {"name": "Razorpay", "enabled": true, "source_type": "greenhouse", "identifier": "razorpaysoftwareprivatelimited", "career_page": "https://razorpay.com/careers/"},
-  {"name": "PhonePe", "enabled": true, "source_type": "greenhouse", "identifier": "phonepe", "career_page": "https://www.phonepe.com/careers/"},
-  {"name": "CRED", "enabled": true, "source_type": "lever", "identifier": "cred", "career_page": "https://careers.cred.club/"},
-  {"name": "Groww", "enabled": true, "source_type": "greenhouse", "identifier": "groww", "career_page": "https://groww.in/careers"},
-  {"name": "Zerodha", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.zerodha.com/", "career_page": "https://careers.zerodha.com/", "note": "custom in-house JS-rendered careers portal, no ATS fingerprint found"},
-  {"name": "Jupiter", "enabled": true, "source_type": "generic_html", "identifier": "https://jupiter.money/careers/", "career_page": "https://jupiter.money/careers/", "note": "uses Keka ATS, not one of the 5 structured source_types"},
-  {"name": "Fi Money", "enabled": true, "source_type": "lever", "identifier": "epifi", "career_page": "https://jobs.lever.co/epifi"},
-  {"name": "Navi", "enabled": true, "source_type": "ashby", "identifier": "navi", "career_page": "https://jobs.ashbyhq.com/navi"},
-  {"name": "Paytm", "enabled": true, "source_type": "lever", "identifier": "paytm", "career_page": "https://jobs.lever.co/paytm"},
-  {"name": "Cashfree", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.kula.ai/cashfree", "career_page": "https://careers.kula.ai/cashfree", "note": "uses Kula ATS, not one of the 5 structured source_types"},
-  {"name": "Freshworks", "enabled": true, "source_type": "smartrecruiters", "identifier": "freshworks", "career_page": "https://jobs.smartrecruiters.com/freshworks"},
-  {"name": "Zoho", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.zohocorp.com/jobs/Careers", "career_page": "https://www.zoho.com/careers/", "note": "custom in-house careers portal, no ATS fingerprint found"},
-  {"name": "Salesforce", "enabled": true, "source_type": "workday", "identifier": {"tenant": "salesforce", "wd_host": "wd12", "site": "External_Career_Site"}, "career_page": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site", "note": "Slack roles are posted inside this same board (Slack has no separate ATS) - do not add Slack as its own entry, it would double-notify the same jobs"},
-  {"name": "ServiceNow", "enabled": true, "source_type": "smartrecruiters", "identifier": "servicenow", "career_page": "https://jobs.smartrecruiters.com/servicenow"},
-  {"name": "HubSpot", "enabled": true, "source_type": "generic_html", "identifier": "https://www.hubspot.com/careers/jobs", "career_page": "https://www.hubspot.com/careers/jobs", "note": "unverified - could not confirm a live structured source"},
-  {"name": "Zendesk", "enabled": true, "source_type": "workday", "identifier": {"tenant": "zendesk", "wd_host": "wd1", "site": "zendesk"}, "career_page": "https://zendesk.wd1.myworkdayjobs.com/en-US/zendesk"},
-  {"name": "Monday.com", "enabled": true, "source_type": "generic_html", "identifier": "https://monday.com/careers", "career_page": "https://monday.com/careers", "note": "unverified - careers page currently shows a maintenance/restructuring notice, no ATS identified"},
-  {"name": "Asana", "enabled": true, "source_type": "greenhouse", "identifier": "asana", "career_page": "https://boards.greenhouse.io/asana"},
-  {"name": "Airtable", "enabled": true, "source_type": "greenhouse", "identifier": "airtable", "career_page": "https://boards.greenhouse.io/airtable"},
-  {"name": "ClickUp", "enabled": true, "source_type": "ashby", "identifier": "clickup", "career_page": "https://jobs.ashbyhq.com/clickup"},
-  {"name": "OpenAI", "enabled": true, "source_type": "ashby", "identifier": "openai", "career_page": "https://jobs.ashbyhq.com/openai"},
-  {"name": "Anthropic", "enabled": true, "source_type": "greenhouse", "identifier": "anthropic", "career_page": "https://boards.greenhouse.io/anthropic"},
-  {"name": "Cohere", "enabled": true, "source_type": "ashby", "identifier": "cohere", "career_page": "https://jobs.ashbyhq.com/cohere"},
-  {"name": "Perplexity", "enabled": true, "source_type": "ashby", "identifier": "perplexity", "career_page": "https://jobs.ashbyhq.com/perplexity"},
-  {"name": "Scale AI", "enabled": true, "source_type": "greenhouse", "identifier": "scaleai", "career_page": "https://boards.greenhouse.io/scaleai"},
-  {"name": "DataRobot", "enabled": true, "source_type": "workday", "identifier": {"tenant": "datarobot", "wd_host": "wd1", "site": "DataRobot_External_Careers"}, "career_page": "https://datarobot.wd1.myworkdayjobs.com/DataRobot_External_Careers"},
-  {"name": "Writer", "enabled": true, "source_type": "ashby", "identifier": "writer", "career_page": "https://jobs.ashbyhq.com/writer"},
-  {"name": "Glean", "enabled": true, "source_type": "greenhouse", "identifier": "gleanwork", "career_page": "https://job-boards.greenhouse.io/gleanwork"},
-  {"name": "GitHub", "enabled": true, "source_type": "generic_html", "identifier": "https://github.careers", "career_page": "https://github.careers", "note": "uses iCIMS, not one of the 5 structured source_types"},
-  {"name": "GitLab", "enabled": true, "source_type": "greenhouse", "identifier": "gitlab", "career_page": "https://about.gitlab.com/jobs/"},
-  {"name": "Postman", "enabled": true, "source_type": "greenhouse", "identifier": "postman", "career_page": "https://www.postman.com/company/careers/"},
-  {"name": "Docker", "enabled": true, "source_type": "ashby", "identifier": "docker", "career_page": "https://www.docker.com/careers/"},
-  {"name": "HashiCorp", "enabled": true, "source_type": "generic_html", "identifier": "https://www.hashicorp.com/en/careers", "career_page": "https://www.hashicorp.com/en/careers", "note": "acquired by IBM; postings now route through IBM's careers platform"},
-  {"name": "JetBrains", "enabled": true, "source_type": "greenhouse", "identifier": "jetbrains", "career_page": "https://www.jetbrains.com/careers/jobs/"},
-  {"name": "Vercel", "enabled": true, "source_type": "greenhouse", "identifier": "vercel", "career_page": "https://vercel.com/careers"},
-  {"name": "Netlify", "enabled": true, "source_type": "greenhouse", "identifier": "netlify", "career_page": "https://www.netlify.com/careers/"},
-  {"name": "Google", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.google.com", "career_page": "https://careers.google.com", "note": "custom in-house ATS, JS-rendered - generic_html scraper may find little/nothing here"},
-  {"name": "Microsoft", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.microsoft.com", "career_page": "https://careers.microsoft.com", "note": "custom in-house ATS, JS-rendered - generic_html scraper may find little/nothing here"},
-  {"name": "Amazon", "enabled": true, "source_type": "generic_html", "identifier": "https://www.amazon.jobs", "career_page": "https://www.amazon.jobs", "note": "custom in-house ATS covering both Amazon retail and AWS roles"},
-  {"name": "Cloudflare", "enabled": true, "source_type": "greenhouse", "identifier": "cloudflare", "career_page": "https://www.cloudflare.com/careers/"},
-  {"name": "DigitalOcean", "enabled": true, "source_type": "greenhouse", "identifier": "digitalocean98", "career_page": "https://www.digitalocean.com/careers"},
-  {"name": "Snowflake", "enabled": true, "source_type": "ashby", "identifier": "snowflake", "career_page": "https://careers.snowflake.com"},
-  {"name": "Databricks", "enabled": true, "source_type": "greenhouse", "identifier": "databricks", "career_page": "https://www.databricks.com/company/careers"},
-  {"name": "MongoDB", "enabled": true, "source_type": "greenhouse", "identifier": "mongodb", "career_page": "https://www.mongodb.com/careers"},
-  {"name": "Okta", "enabled": true, "source_type": "greenhouse", "identifier": "okta", "career_page": "https://www.okta.com/company/careers/"},
-  {"name": "Palo Alto Networks", "enabled": true, "source_type": "generic_html", "identifier": "https://jobs.paloaltonetworks.com/en/search-jobs", "career_page": "https://jobs.paloaltonetworks.com/en/search-jobs", "note": "uses TalentBrew, not one of the 5 structured source_types"},
-  {"name": "CrowdStrike", "enabled": true, "source_type": "workday", "identifier": {"tenant": "crowdstrike", "wd_host": "wd5", "site": "crowdstrikecareers"}, "career_page": "https://www.crowdstrike.com/en-us/careers/"},
-  {"name": "Wiz", "enabled": true, "source_type": "greenhouse", "identifier": "wizinc", "career_page": "https://www.wiz.io/careers"},
-  {"name": "SentinelOne", "enabled": true, "source_type": "greenhouse", "identifier": "sentinellabs", "career_page": "https://www.sentinelone.com/jobs/"},
-  {"name": "Zscaler", "enabled": true, "source_type": "greenhouse", "identifier": "zscaler", "career_page": "https://www.zscaler.com/careers"},
-  {"name": "Cisco", "enabled": true, "source_type": "workday", "identifier": {"tenant": "cisco", "wd_host": "wd5", "site": "Cisco_Careers"}, "career_page": "https://jobs.cisco.com/"},
-  {"name": "Fortinet", "enabled": true, "source_type": "generic_html", "identifier": "https://www.fortinet.com/corporate/careers", "career_page": "https://www.fortinet.com/corporate/careers", "note": "uses Oracle Cloud HCM, not one of the 5 structured source_types"},
-  {"name": "Philips Healthcare", "enabled": true, "source_type": "workday", "identifier": {"tenant": "philips", "wd_host": "wd3", "site": "jobs-and-careers"}, "career_page": "https://philips.wd3.myworkdayjobs.com/en-US/jobs-and-careers"},
-  {"name": "Siemens Healthineers", "enabled": true, "source_type": "workday", "identifier": {"tenant": "onehealthineers", "wd_host": "wd3", "site": "SHSJB"}, "career_page": "https://onehealthineers.wd3.myworkdayjobs.com/SHSJB"},
-  {"name": "GE HealthCare", "enabled": true, "source_type": "workday", "identifier": {"tenant": "gehc", "wd_host": "wd5", "site": "GEHC_ExternalSite"}, "career_page": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite"},
-  {"name": "Practo", "enabled": true, "source_type": "generic_html", "identifier": "https://www.practo.com/company/careers", "career_page": "https://www.practo.com/company/careers", "note": "unverified - could not confirm a live structured source"},
-  {"name": "Innovaccer", "enabled": true, "source_type": "generic_html", "identifier": "https://innovaccer.com/careers", "career_page": "https://innovaccer.com/careers", "note": "unverified - JS-rendered SPA, no ATS fingerprint found"},
-  {"name": "HealthPlix", "enabled": true, "source_type": "generic_html", "identifier": "https://recruit.healthplix.com/jobs/Careers", "career_page": "https://www.healthplix.com/careers", "note": "fixed careers URL - the plain healthplix.com/careers path 404s"},
-  {"name": "Eka Care", "enabled": true, "source_type": "generic_html", "identifier": "https://www.eka.care/careers", "career_page": "https://www.eka.care/careers", "note": "returns 403 - likely bot-blocked (Cloudflare/WAF); will keep erroring until found some other way, low priority to fix"},
-  {"name": "Flatiron Health", "enabled": true, "source_type": "greenhouse", "identifier": "flatironhealth", "career_page": "https://flatiron.com/careers/open-positions"},
-  {"name": "Flipkart", "enabled": true, "source_type": "generic_html", "identifier": "https://www.flipkartcareers.com/jobslist", "career_page": "https://www.flipkartcareers.com/jobslist", "note": "custom in-house ATS"},
-  {"name": "Myntra", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.myntra.com/", "career_page": "https://careers.myntra.com/", "note": "custom in-house ATS"},
-  {"name": "Meesho", "enabled": true, "source_type": "lever", "identifier": "meesho", "career_page": "https://careers.meesho.com/"},
-  {"name": "Walmart", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.walmart.com/", "career_page": "https://careers.walmart.com/", "note": "Workday tenant exists (walmart.wd5.myworkdayjobs.com/WalmartExternal) but the jobs API was blocked on every attempt - using generic_html fallback"},
-  {"name": "Target", "enabled": true, "source_type": "workday", "identifier": {"tenant": "target", "wd_host": "wd5", "site": "targetcareers"}, "career_page": "https://target.wd5.myworkdayjobs.com/targetcareers"},
-  {"name": "Shopify", "enabled": true, "source_type": "generic_html", "identifier": "https://www.shopify.com/careers", "career_page": "https://www.shopify.com/careers", "note": "custom in-house ATS"},
-  {"name": "Etsy", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.etsy.com/jobs/search", "career_page": "https://careers.etsy.com/jobs/search", "note": "custom in-house ATS"},
-  {"name": "Uber", "enabled": true, "source_type": "generic_html", "identifier": "https://www.uber.com/us/en/careers/", "career_page": "https://www.uber.com/us/en/careers/", "note": "custom in-house ATS; SmartRecruiters 'Uber' board is a dummy/test board, do not use"},
-  {"name": "Ola", "enabled": true, "source_type": "generic_html", "identifier": "https://www.olacabs.com/careers", "career_page": "https://www.olacabs.com/careers", "note": "uses TurboHire ATS, not one of the 5 structured source_types"},
-  {"name": "Rapido", "enabled": true, "source_type": "generic_html", "identifier": "https://www.rapido.bike/Careers", "career_page": "https://www.rapido.bike/Careers", "note": "uses Darwinbox ATS, not one of the 5 structured source_types"},
-  {"name": "Airbnb", "enabled": true, "source_type": "greenhouse", "identifier": "airbnb", "career_page": "https://careers.airbnb.com/"},
-  {"name": "Booking.com", "enabled": true, "source_type": "smartrecruiters", "identifier": "Bookingcom1", "career_page": "https://careers.smartrecruiters.com/Bookingcom1"},
-  {"name": "Expedia", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.expediagroup.com/jobs/", "career_page": "https://careers.expediagroup.com/jobs/", "note": "Workday-hosted but tenant/site config unconfirmed - using generic_html fallback until verified"},
-  {"name": "MakeMyTrip", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.makemytrip.com/", "career_page": "https://careers.makemytrip.com/", "note": "uses Darwinbox internally, not one of the 5 structured source_types"},
-  {"name": "RedBus", "enabled": true, "source_type": "smartrecruiters", "identifier": "RedBus1", "career_page": "https://careers.smartrecruiters.com/RedBus1"},
-  {"name": "Notion", "enabled": true, "source_type": "ashby", "identifier": "notion", "career_page": "https://jobs.ashbyhq.com/notion"},
-  {"name": "Figma", "enabled": true, "source_type": "greenhouse", "identifier": "figma", "career_page": "https://www.figma.com/careers/"},
-  {"name": "Miro", "enabled": true, "source_type": "ashby", "identifier": "miro", "career_page": "https://miro.com/careers/"},
-  {"name": "Canva", "enabled": true, "source_type": "smartrecruiters", "identifier": "Canva", "career_page": "https://www.lifeatcanva.com/en/jobs/"},
-  {"name": "Dropbox", "enabled": true, "source_type": "greenhouse", "identifier": "dropbox", "career_page": "https://jobs.dropbox.com/"},
-  {"name": "Siemens Digital Industries", "enabled": true, "source_type": "generic_html", "identifier": "https://jobs.siemens.com/careers", "career_page": "https://jobs.siemens.com/careers", "note": "uses Avature ATS, not one of the 5 structured source_types"},
-  {"name": "Honeywell", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.honeywell.com/en/sites/Honeywell", "career_page": "https://careers.honeywell.com/en/sites/Honeywell", "note": "uses Oracle Fusion Recruiting Cloud, not one of the 5 structured source_types"},
-  {"name": "Schneider Electric", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.se.com/jobs", "career_page": "https://careers.se.com/jobs", "note": "uses iCIMS, not one of the 5 structured source_types"},
-  {"name": "Rockwell Automation", "enabled": true, "source_type": "workday", "identifier": {"tenant": "rockwellautomation", "wd_host": "wd1", "site": "External_Rockwell_Automation"}, "career_page": "https://rockwellautomation.wd1.myworkdayjobs.com/External_Rockwell_Automation"},
-  {"name": "ABB", "enabled": true, "source_type": "generic_html", "identifier": "https://careers.abb/global/en/home", "career_page": "https://careers.abb/global/en/home", "note": "uses Phenom People CareerConnect, not one of the 5 structured source_types"},
-  {"name": "Emerson", "enabled": true, "source_type": "generic_html", "identifier": "https://www.emerson.com/en/corporate/careers", "career_page": "https://www.emerson.com/en/corporate/careers", "note": "uses Oracle Fusion Recruiting Cloud, not one of the 5 structured source_types"},
-  {"name": "Bosch", "enabled": true, "source_type": "smartrecruiters", "identifier": "BoschGroup", "career_page": "https://careers.smartrecruiters.com/BoschGroup"},
-  {"name": "PTC", "enabled": true, "source_type": "workday", "identifier": {"tenant": "ptc", "wd_host": "wd1", "site": "PTC"}, "career_page": "https://ptc.wd1.myworkdayjobs.com/PTC"},
-  {"name": "Apple", "enabled": true, "source_type": "generic_html", "identifier": "https://jobs.apple.com/en-us/search", "career_page": "https://jobs.apple.com/en-us/search", "note": "proprietary in-house ATS, JS-rendered - generic_html scraper may find little/nothing here"},
-  {"name": "Meta", "enabled": true, "source_type": "generic_html", "identifier": "https://www.metacareers.com/jobsearch/", "career_page": "https://www.metacareers.com/jobsearch/", "note": "proprietary in-house ATS, JS-rendered - generic_html scraper may find little/nothing here"},
-  {"name": "Spotify", "enabled": true, "source_type": "lever", "identifier": "spotify", "career_page": "https://www.lifeatspotify.com/"},
-  {"name": "Netflix", "enabled": true, "source_type": "generic_html", "identifier": "https://explore.jobs.netflix.net/careers", "career_page": "https://explore.jobs.netflix.net/careers", "note": "uses Eightfold AI, JS-rendered - generic_html scraper may find little/nothing here"},
-  {"name": "Adobe", "enabled": true, "source_type": "workday", "identifier": {"tenant": "adobe", "wd_host": "wd5", "site": "external_experienced"}, "career_page": "https://adobe.wd5.myworkdayjobs.com/external_experienced"},
-  {"name": "Duolingo", "enabled": true, "source_type": "greenhouse", "identifier": "duolingo", "career_page": "https://careers.duolingo.com/"},
-  {"name": "Swiggy", "enabled": true, "source_type": "smartrecruiters", "identifier": "Swiggy", "career_page": "https://careers.smartrecruiters.com/Swiggy"},
-  {"name": "Zomato", "enabled": true, "source_type": "generic_html", "identifier": "https://www.zomato.com/careers", "career_page": "https://www.zomato.com/careers", "note": "unverified - existing SmartRecruiters/Lever leads were stale or false collisions, do not use"},
-  {"name": "Dream11", "enabled": true, "source_type": "generic_html", "identifier": "https://www.dreamsports.group/careers", "career_page": "https://www.dreamsports.group/careers", "note": "unverified - linked Lever board is dead (404)"},
-  {"name": "BrowserStack", "enabled": true, "source_type": "workday", "identifier": {"tenant": "browserstack", "wd_host": "wd3", "site": "External"}, "career_page": "https://browserstack.wd3.myworkdayjobs.com/External"},
-  {"name": "ShareChat", "enabled": true, "source_type": "generic_html", "identifier": "https://sharechat.com/careers", "career_page": "https://sharechat.com/careers", "note": "uses MyNextHire ATS (JS-rendered iframe board), not one of the 5 structured source_types"},
-  {"name": "InMobi", "enabled": true, "source_type": "greenhouse", "identifier": "inmobi", "career_page": "https://job-boards.greenhouse.io/inmobi"},
-  {"name": "Juspay", "enabled": true, "source_type": "generic_html", "identifier": "https://juspay.io/careers", "career_page": "https://juspay.io/careers", "note": "unverified - page currently shows no open roles, links only to LinkedIn"},
-  {"name": "Darwinbox", "enabled": true, "source_type": "generic_html", "identifier": "https://darwinbox.com/careers", "career_page": "https://darwinbox.com/careers", "note": "hires via its own Darwinbox Recruit product (JS SPA behind Cloudflare Turnstile)"},
-  {"name": "Unacademy", "enabled": true, "source_type": "smartrecruiters", "identifier": "Unacademy", "career_page": "https://careers.smartrecruiters.com/Unacademy"},
-  {"name": "Chargebee", "enabled": true, "source_type": "generic_html", "identifier": "https://www.chargebee.com/careers/", "career_page": "https://www.chargebee.com/careers/", "note": "unverified - Nuxt SPA site links only to LinkedIn Jobs"}
+  {
+    "name": "Tiger Analytics",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://apply.workable.com/tiger-analytics/",
+    "career_page": "https://apply.workable.com/tiger-analytics/",
+    "note": "uses Workable ATS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Mu Sigma",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.mu-sigma.com/career/",
+    "career_page": "https://www.mu-sigma.com/career/",
+    "note": "unverified - could not confirm a live structured source"
+  },
+  {
+    "name": "LatentView Analytics",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.latentview.com/career/",
+    "career_page": "https://www.latentview.com/career/",
+    "note": "unverified - could not confirm a live structured source"
+  },
+  {
+    "name": "Fractal Analytics",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "fractal",
+      "wd_host": "wd1",
+      "site": "Careers"
+    },
+    "career_page": "https://fractal.wd1.myworkdayjobs.com/Careers"
+  },
+  {
+    "name": "Tredence",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://tredence.ripplehire.com/candidate/careers",
+    "career_page": "https://tredence.ripplehire.com/candidate/careers",
+    "note": "unverified - could not confirm a live structured source"
+  },
+  {
+    "name": "Quantiphi",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "quantiphi",
+      "wd_host": "wd1",
+      "site": "Careers_at_Quantiphi"
+    },
+    "career_page": "https://quantiphi.wd1.myworkdayjobs.com/Careers_at_Quantiphi"
+  },
+  {
+    "name": "Course5 Intelligence",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.course5i.com/careers/",
+    "career_page": "https://www.course5i.com/careers/",
+    "note": "unverified - could not confirm a live structured source"
+  },
+  {
+    "name": "EXL Analytics",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.exlservice.com/careers",
+    "career_page": "https://www.exlservice.com/careers",
+    "note": "unverified - could not confirm a live structured source"
+  },
+  {
+    "name": "FourKites",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "fourkites",
+    "career_page": "https://www.fourkites.com/careers/"
+  },
+  {
+    "name": "project44",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "project44",
+    "career_page": "https://www.project44.com/careers/"
+  },
+  {
+    "name": "Blue Yonder",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "jda",
+      "wd_host": "wd5",
+      "site": "JDA_Careers"
+    },
+    "career_page": "https://careers.blueyonder.com/us/en/search-results"
+  },
+  {
+    "name": "Manhattan Associates",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "manh",
+      "wd_host": "wd5",
+      "site": "External"
+    },
+    "career_page": "https://www.manh.com/about-us/careers"
+  },
+  {
+    "name": "Kinaxis",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers-kinaxis.icims.com/",
+    "career_page": "https://www.kinaxis.com/en/careers",
+    "note": "uses iCIMS ATS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "o9 Solutions",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "o9solutions",
+      "wd_host": "wd5",
+      "site": "o9SolutionsExternal"
+    },
+    "career_page": "https://o9solutions.wd5.myworkdayjobs.com/o9SolutionsExternal"
+  },
+  {
+    "name": "E2open",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.e2open.com/jobs/",
+    "career_page": "https://www.e2open.com/jobs/",
+    "note": "unverified - could not confirm a live structured source"
+  },
+  {
+    "name": "Oracle",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.oracle.com/careers/",
+    "career_page": "https://www.oracle.com/careers/",
+    "note": "proprietary Oracle Recruiting Cloud, not one of the 5 structured source_types"
+  },
+  {
+    "name": "SAP",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://jobs.sap.com/",
+    "career_page": "https://jobs.sap.com/",
+    "note": "uses SuccessFactors, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Infor",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.infor.com/",
+    "career_page": "https://careers.infor.com/",
+    "note": "uses PinpointHQ ATS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Razorpay",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "razorpaysoftwareprivatelimited",
+    "career_page": "https://razorpay.com/careers/"
+  },
+  {
+    "name": "PhonePe",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "phonepe",
+    "career_page": "https://www.phonepe.com/careers/"
+  },
+  {
+    "name": "CRED",
+    "enabled": true,
+    "source_type": "lever",
+    "identifier": "cred",
+    "career_page": "https://careers.cred.club/"
+  },
+  {
+    "name": "Groww",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "groww",
+    "career_page": "https://groww.in/careers"
+  },
+  {
+    "name": "Zerodha",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.zerodha.com/",
+    "career_page": "https://careers.zerodha.com/",
+    "note": "custom in-house JS-rendered careers portal, no ATS fingerprint found"
+  },
+  {
+    "name": "Jupiter",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://jupiter.money/careers/",
+    "career_page": "https://jupiter.money/careers/",
+    "note": "uses Keka ATS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Fi Money",
+    "enabled": true,
+    "source_type": "lever",
+    "identifier": "epifi",
+    "career_page": "https://jobs.lever.co/epifi"
+  },
+  {
+    "name": "Navi",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "navi",
+    "career_page": "https://jobs.ashbyhq.com/navi"
+  },
+  {
+    "name": "Paytm",
+    "enabled": true,
+    "source_type": "lever",
+    "identifier": "paytm",
+    "career_page": "https://jobs.lever.co/paytm"
+  },
+  {
+    "name": "Cashfree",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.kula.ai/cashfree",
+    "career_page": "https://careers.kula.ai/cashfree",
+    "note": "uses Kula ATS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Freshworks",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "freshworks",
+    "career_page": "https://jobs.smartrecruiters.com/freshworks"
+  },
+  {
+    "name": "Zoho",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.zohocorp.com/jobs/Careers",
+    "career_page": "https://www.zoho.com/careers/",
+    "note": "custom in-house careers portal, no ATS fingerprint found"
+  },
+  {
+    "name": "Salesforce",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "salesforce",
+      "wd_host": "wd12",
+      "site": "External_Career_Site"
+    },
+    "career_page": "https://salesforce.wd12.myworkdayjobs.com/External_Career_Site",
+    "note": "Slack roles are posted inside this same board (Slack has no separate ATS) - do not add Slack as its own entry, it would double-notify the same jobs"
+  },
+  {
+    "name": "ServiceNow",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "servicenow",
+    "career_page": "https://jobs.smartrecruiters.com/servicenow"
+  },
+  {
+    "name": "HubSpot",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.hubspot.com/careers/jobs",
+    "career_page": "https://www.hubspot.com/careers/jobs",
+    "note": "unverified - could not confirm a live structured source"
+  },
+  {
+    "name": "Zendesk",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "zendesk",
+      "wd_host": "wd1",
+      "site": "zendesk"
+    },
+    "career_page": "https://zendesk.wd1.myworkdayjobs.com/en-US/zendesk"
+  },
+  {
+    "name": "Monday.com",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://monday.com/careers",
+    "career_page": "https://monday.com/careers",
+    "note": "unverified - careers page currently shows a maintenance/restructuring notice, no ATS identified"
+  },
+  {
+    "name": "Asana",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "asana",
+    "career_page": "https://boards.greenhouse.io/asana"
+  },
+  {
+    "name": "Airtable",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "airtable",
+    "career_page": "https://boards.greenhouse.io/airtable"
+  },
+  {
+    "name": "ClickUp",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "clickup",
+    "career_page": "https://jobs.ashbyhq.com/clickup"
+  },
+  {
+    "name": "OpenAI",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "openai",
+    "career_page": "https://jobs.ashbyhq.com/openai"
+  },
+  {
+    "name": "Anthropic",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "anthropic",
+    "career_page": "https://boards.greenhouse.io/anthropic"
+  },
+  {
+    "name": "Cohere",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "cohere",
+    "career_page": "https://jobs.ashbyhq.com/cohere"
+  },
+  {
+    "name": "Perplexity",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "perplexity",
+    "career_page": "https://jobs.ashbyhq.com/perplexity"
+  },
+  {
+    "name": "Scale AI",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "scaleai",
+    "career_page": "https://boards.greenhouse.io/scaleai"
+  },
+  {
+    "name": "DataRobot",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "datarobot",
+      "wd_host": "wd1",
+      "site": "DataRobot_External_Careers"
+    },
+    "career_page": "https://datarobot.wd1.myworkdayjobs.com/DataRobot_External_Careers"
+  },
+  {
+    "name": "Writer",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "writer",
+    "career_page": "https://jobs.ashbyhq.com/writer"
+  },
+  {
+    "name": "Glean",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "gleanwork",
+    "career_page": "https://job-boards.greenhouse.io/gleanwork"
+  },
+  {
+    "name": "GitHub",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://github.careers",
+    "career_page": "https://github.careers",
+    "note": "uses iCIMS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "GitLab",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "gitlab",
+    "career_page": "https://about.gitlab.com/jobs/"
+  },
+  {
+    "name": "Postman",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "postman",
+    "career_page": "https://www.postman.com/company/careers/"
+  },
+  {
+    "name": "Docker",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "docker",
+    "career_page": "https://www.docker.com/careers/"
+  },
+  {
+    "name": "HashiCorp",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.hashicorp.com/en/careers",
+    "career_page": "https://www.hashicorp.com/en/careers",
+    "note": "acquired by IBM; postings now route through IBM's careers platform"
+  },
+  {
+    "name": "JetBrains",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "jetbrains",
+    "career_page": "https://www.jetbrains.com/careers/jobs/"
+  },
+  {
+    "name": "Vercel",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "vercel",
+    "career_page": "https://vercel.com/careers"
+  },
+  {
+    "name": "Netlify",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "netlify",
+    "career_page": "https://www.netlify.com/careers/"
+  },
+  {
+    "name": "Google",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.google.com",
+    "career_page": "https://careers.google.com",
+    "note": "custom in-house ATS, JS-rendered - generic_html scraper may find little/nothing here"
+  },
+  {
+    "name": "Microsoft",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.microsoft.com",
+    "career_page": "https://careers.microsoft.com",
+    "note": "custom in-house ATS, JS-rendered - generic_html scraper may find little/nothing here"
+  },
+  {
+    "name": "Amazon",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.amazon.jobs",
+    "career_page": "https://www.amazon.jobs",
+    "note": "custom in-house ATS covering both Amazon retail and AWS roles"
+  },
+  {
+    "name": "Cloudflare",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "cloudflare",
+    "career_page": "https://www.cloudflare.com/careers/"
+  },
+  {
+    "name": "DigitalOcean",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "digitalocean98",
+    "career_page": "https://www.digitalocean.com/careers"
+  },
+  {
+    "name": "Snowflake",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "snowflake",
+    "career_page": "https://careers.snowflake.com"
+  },
+  {
+    "name": "Databricks",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "databricks",
+    "career_page": "https://www.databricks.com/company/careers"
+  },
+  {
+    "name": "MongoDB",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "mongodb",
+    "career_page": "https://www.mongodb.com/careers"
+  },
+  {
+    "name": "Okta",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "okta",
+    "career_page": "https://www.okta.com/company/careers/"
+  },
+  {
+    "name": "Palo Alto Networks",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://jobs.paloaltonetworks.com/en/search-jobs",
+    "career_page": "https://jobs.paloaltonetworks.com/en/search-jobs",
+    "note": "uses TalentBrew, not one of the 5 structured source_types"
+  },
+  {
+    "name": "CrowdStrike",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "crowdstrike",
+      "wd_host": "wd5",
+      "site": "crowdstrikecareers"
+    },
+    "career_page": "https://www.crowdstrike.com/en-us/careers/"
+  },
+  {
+    "name": "Wiz",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "wizinc",
+    "career_page": "https://www.wiz.io/careers"
+  },
+  {
+    "name": "SentinelOne",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "sentinellabs",
+    "career_page": "https://www.sentinelone.com/jobs/"
+  },
+  {
+    "name": "Zscaler",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "zscaler",
+    "career_page": "https://www.zscaler.com/careers"
+  },
+  {
+    "name": "Cisco",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "cisco",
+      "wd_host": "wd5",
+      "site": "Cisco_Careers"
+    },
+    "career_page": "https://jobs.cisco.com/"
+  },
+  {
+    "name": "Fortinet",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.fortinet.com/corporate/careers",
+    "career_page": "https://www.fortinet.com/corporate/careers",
+    "note": "uses Oracle Cloud HCM, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Philips Healthcare",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "philips",
+      "wd_host": "wd3",
+      "site": "jobs-and-careers"
+    },
+    "career_page": "https://philips.wd3.myworkdayjobs.com/en-US/jobs-and-careers"
+  },
+  {
+    "name": "Siemens Healthineers",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "onehealthineers",
+      "wd_host": "wd3",
+      "site": "SHSJB"
+    },
+    "career_page": "https://onehealthineers.wd3.myworkdayjobs.com/SHSJB"
+  },
+  {
+    "name": "GE HealthCare",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "gehc",
+      "wd_host": "wd5",
+      "site": "GEHC_ExternalSite"
+    },
+    "career_page": "https://gehc.wd5.myworkdayjobs.com/GEHC_ExternalSite"
+  },
+  {
+    "name": "Practo",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.practo.com/company/careers",
+    "career_page": "https://www.practo.com/company/careers",
+    "note": "unverified - could not confirm a live structured source"
+  },
+  {
+    "name": "Innovaccer",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://innovaccer.com/careers",
+    "career_page": "https://innovaccer.com/careers",
+    "note": "unverified - JS-rendered SPA, no ATS fingerprint found"
+  },
+  {
+    "name": "HealthPlix",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://recruit.healthplix.com/jobs/Careers",
+    "career_page": "https://www.healthplix.com/careers",
+    "note": "fixed careers URL - the plain healthplix.com/careers path 404s"
+  },
+  {
+    "name": "Eka Care",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.eka.care/careers",
+    "career_page": "https://www.eka.care/careers",
+    "note": "returns 403 - likely bot-blocked (Cloudflare/WAF); will keep erroring until found some other way, low priority to fix"
+  },
+  {
+    "name": "Flatiron Health",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "flatironhealth",
+    "career_page": "https://flatiron.com/careers/open-positions"
+  },
+  {
+    "name": "Flipkart",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.flipkartcareers.com/jobslist",
+    "career_page": "https://www.flipkartcareers.com/jobslist",
+    "note": "custom in-house ATS"
+  },
+  {
+    "name": "Myntra",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.myntra.com/",
+    "career_page": "https://careers.myntra.com/",
+    "note": "custom in-house ATS"
+  },
+  {
+    "name": "Meesho",
+    "enabled": true,
+    "source_type": "lever",
+    "identifier": "meesho",
+    "career_page": "https://careers.meesho.com/"
+  },
+  {
+    "name": "Walmart",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.walmart.com/",
+    "career_page": "https://careers.walmart.com/",
+    "note": "Workday tenant exists (walmart.wd5.myworkdayjobs.com/WalmartExternal) but the jobs API was blocked on every attempt - using generic_html fallback"
+  },
+  {
+    "name": "Target",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "target",
+      "wd_host": "wd5",
+      "site": "targetcareers"
+    },
+    "career_page": "https://target.wd5.myworkdayjobs.com/targetcareers"
+  },
+  {
+    "name": "Shopify",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.shopify.com/careers",
+    "career_page": "https://www.shopify.com/careers",
+    "note": "custom in-house ATS"
+  },
+  {
+    "name": "Etsy",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.etsy.com/jobs/search",
+    "career_page": "https://careers.etsy.com/jobs/search",
+    "note": "custom in-house ATS"
+  },
+  {
+    "name": "Uber",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.uber.com/us/en/careers/",
+    "career_page": "https://www.uber.com/us/en/careers/",
+    "note": "custom in-house ATS; SmartRecruiters 'Uber' board is a dummy/test board, do not use"
+  },
+  {
+    "name": "Ola",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.olacabs.com/careers",
+    "career_page": "https://www.olacabs.com/careers",
+    "note": "uses TurboHire ATS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Rapido",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.rapido.bike/Careers",
+    "career_page": "https://www.rapido.bike/Careers",
+    "note": "uses Darwinbox ATS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Airbnb",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "airbnb",
+    "career_page": "https://careers.airbnb.com/"
+  },
+  {
+    "name": "Booking.com",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "Bookingcom1",
+    "career_page": "https://careers.smartrecruiters.com/Bookingcom1"
+  },
+  {
+    "name": "Expedia",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.expediagroup.com/jobs/",
+    "career_page": "https://careers.expediagroup.com/jobs/",
+    "note": "Workday-hosted but tenant/site config unconfirmed - using generic_html fallback until verified"
+  },
+  {
+    "name": "MakeMyTrip",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.makemytrip.com/",
+    "career_page": "https://careers.makemytrip.com/",
+    "note": "uses Darwinbox internally, not one of the 5 structured source_types"
+  },
+  {
+    "name": "RedBus",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "RedBus1",
+    "career_page": "https://careers.smartrecruiters.com/RedBus1"
+  },
+  {
+    "name": "Notion",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "notion",
+    "career_page": "https://jobs.ashbyhq.com/notion"
+  },
+  {
+    "name": "Figma",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "figma",
+    "career_page": "https://www.figma.com/careers/"
+  },
+  {
+    "name": "Miro",
+    "enabled": true,
+    "source_type": "ashby",
+    "identifier": "miro",
+    "career_page": "https://miro.com/careers/"
+  },
+  {
+    "name": "Canva",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "Canva",
+    "career_page": "https://www.lifeatcanva.com/en/jobs/"
+  },
+  {
+    "name": "Dropbox",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "dropbox",
+    "career_page": "https://jobs.dropbox.com/"
+  },
+  {
+    "name": "Siemens Digital Industries",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://jobs.siemens.com/careers",
+    "career_page": "https://jobs.siemens.com/careers",
+    "note": "uses Avature ATS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Honeywell",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.honeywell.com/en/sites/Honeywell",
+    "career_page": "https://careers.honeywell.com/en/sites/Honeywell",
+    "note": "uses Oracle Fusion Recruiting Cloud, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Schneider Electric",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.se.com/jobs",
+    "career_page": "https://careers.se.com/jobs",
+    "note": "uses iCIMS, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Rockwell Automation",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "rockwellautomation",
+      "wd_host": "wd1",
+      "site": "External_Rockwell_Automation"
+    },
+    "career_page": "https://rockwellautomation.wd1.myworkdayjobs.com/External_Rockwell_Automation"
+  },
+  {
+    "name": "ABB",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://careers.abb/global/en/home",
+    "career_page": "https://careers.abb/global/en/home",
+    "note": "uses Phenom People CareerConnect, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Emerson",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.emerson.com/en/corporate/careers",
+    "career_page": "https://www.emerson.com/en/corporate/careers",
+    "note": "uses Oracle Fusion Recruiting Cloud, not one of the 5 structured source_types"
+  },
+  {
+    "name": "Bosch",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "BoschGroup",
+    "career_page": "https://careers.smartrecruiters.com/BoschGroup"
+  },
+  {
+    "name": "PTC",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "ptc",
+      "wd_host": "wd1",
+      "site": "PTC"
+    },
+    "career_page": "https://ptc.wd1.myworkdayjobs.com/PTC"
+  },
+  {
+    "name": "Apple",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://jobs.apple.com/en-us/search",
+    "career_page": "https://jobs.apple.com/en-us/search",
+    "note": "proprietary in-house ATS, JS-rendered - generic_html scraper may find little/nothing here"
+  },
+  {
+    "name": "Meta",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.metacareers.com/jobsearch/",
+    "career_page": "https://www.metacareers.com/jobsearch/",
+    "note": "proprietary in-house ATS, JS-rendered - generic_html scraper may find little/nothing here"
+  },
+  {
+    "name": "Spotify",
+    "enabled": true,
+    "source_type": "lever",
+    "identifier": "spotify",
+    "career_page": "https://www.lifeatspotify.com/"
+  },
+  {
+    "name": "Netflix",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://explore.jobs.netflix.net/careers",
+    "career_page": "https://explore.jobs.netflix.net/careers",
+    "note": "uses Eightfold AI, JS-rendered - generic_html scraper may find little/nothing here"
+  },
+  {
+    "name": "Adobe",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "adobe",
+      "wd_host": "wd5",
+      "site": "external_experienced"
+    },
+    "career_page": "https://adobe.wd5.myworkdayjobs.com/external_experienced"
+  },
+  {
+    "name": "Duolingo",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "duolingo",
+    "career_page": "https://careers.duolingo.com/"
+  },
+  {
+    "name": "Swiggy",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "Swiggy",
+    "career_page": "https://careers.smartrecruiters.com/Swiggy"
+  },
+  {
+    "name": "Zomato",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.zomato.com/careers",
+    "career_page": "https://www.zomato.com/careers",
+    "note": "unverified - existing SmartRecruiters/Lever leads were stale or false collisions, do not use"
+  },
+  {
+    "name": "Dream11",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.dreamsports.group/careers",
+    "career_page": "https://www.dreamsports.group/careers",
+    "note": "unverified - linked Lever board is dead (404)"
+  },
+  {
+    "name": "BrowserStack",
+    "enabled": true,
+    "source_type": "workday",
+    "identifier": {
+      "tenant": "browserstack",
+      "wd_host": "wd3",
+      "site": "External"
+    },
+    "career_page": "https://browserstack.wd3.myworkdayjobs.com/External"
+  },
+  {
+    "name": "ShareChat",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://sharechat.com/careers",
+    "career_page": "https://sharechat.com/careers",
+    "note": "uses MyNextHire ATS (JS-rendered iframe board), not one of the 5 structured source_types"
+  },
+  {
+    "name": "InMobi",
+    "enabled": true,
+    "source_type": "greenhouse",
+    "identifier": "inmobi",
+    "career_page": "https://job-boards.greenhouse.io/inmobi"
+  },
+  {
+    "name": "Juspay",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://juspay.io/careers",
+    "career_page": "https://juspay.io/careers",
+    "note": "unverified - page currently shows no open roles, links only to LinkedIn"
+  },
+  {
+    "name": "Darwinbox",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://darwinbox.com/careers",
+    "career_page": "https://darwinbox.com/careers",
+    "note": "hires via its own Darwinbox Recruit product (JS SPA behind Cloudflare Turnstile)"
+  },
+  {
+    "name": "Unacademy",
+    "enabled": true,
+    "source_type": "smartrecruiters",
+    "identifier": "Unacademy",
+    "career_page": "https://careers.smartrecruiters.com/Unacademy"
+  },
+  {
+    "name": "Chargebee",
+    "enabled": true,
+    "source_type": "generic_html",
+    "identifier": "https://www.chargebee.com/careers/",
+    "career_page": "https://www.chargebee.com/careers/",
+    "note": "unverified - Nuxt SPA site links only to LinkedIn Jobs"
+  }
 ]
