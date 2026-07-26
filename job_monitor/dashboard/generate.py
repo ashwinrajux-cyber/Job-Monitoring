@@ -5,9 +5,11 @@ client-side over an embedded JSON payload, so this can be served for free via
 GitHub Pages.
 """
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 from job_monitor.storage import db
+
+IST = timezone(timedelta(hours=5, minutes=30))
 
 TEMPLATE = """<!doctype html>
 <html lang="en">
@@ -262,7 +264,7 @@ function formatTs(iso) {
   if (!iso) return '—';
   const d = new Date(iso);
   if (isNaN(d)) return iso;
-  return d.toLocaleString(undefined, {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'});
+  return d.toLocaleString('en-IN', {timeZone: 'Asia/Kolkata', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true}) + ' IST';
 }
 
 function escapeHtml(s) {
@@ -284,11 +286,12 @@ renderCompanies();
 
 
 def _format_ts(iso):
+    """Time-only, IST - this tile refreshes every ~10 minutes so a date is just noise."""
     if not iso:
         return "—"
     try:
-        dt = datetime.fromisoformat(iso)
-        return dt.strftime("%b %d, %I:%M %p UTC")
+        dt = datetime.fromisoformat(iso).astimezone(IST)
+        return dt.strftime("%I:%M %p IST")
     except ValueError:
         return iso
 
@@ -300,7 +303,7 @@ def render(conn, output_path):
     companies = db.get_company_status(conn)
 
     html = TEMPLATE
-    html = html.replace("__GENERATED_AT__", datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"))
+    html = html.replace("__GENERATED_AT__", datetime.now(timezone.utc).astimezone(IST).strftime("%b %d, %I:%M %p IST"))
     html = html.replace("__TOTAL_COMPANIES__", str(stats["total_companies"]))
     html = html.replace("__ACTIVE_COMPANIES__", str(stats["active_companies"]))
     html = html.replace("__ERROR_COMPANIES__", str(stats["error_companies"]))
