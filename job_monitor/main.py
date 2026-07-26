@@ -125,7 +125,7 @@ def main():
             traceback.print_exc()
             results.append({"company": company.get("name"), "new_jobs": 0, "notified": 0, "error": "unexpected failure"})
 
-    render(conn, str(DASHBOARD_DIR / "index.html"))
+    render(conn, str(DASHBOARD_DIR / "index.html"), companies_config=companies)
     conn.close()
 
     total_new = sum(r["new_jobs"] for r in results)
