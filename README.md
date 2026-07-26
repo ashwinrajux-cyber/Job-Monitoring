@@ -174,6 +174,29 @@ The dashboard (`docs/index.html`) has live client-side filters over Company,
 Role, Location, Experience, and Date detected — no backend needed, works on
 the static GitHub Pages copy.
 
+## Managing companies from the dashboard
+
+The dashboard also has a "Manage companies" section to enable/disable, remove,
+or add companies without editing `companies.json` by hand. Since the dashboard
+is a static page with no backend, it saves changes by calling GitHub's
+Contents API directly from your browser, using a token you paste in once:
+
+1. Create a **fine-grained personal access token** at
+   `github.com/settings/tokens?type=beta`, scoped to just this repo, with
+   **Contents: Read and write** permission. (This is separate from the
+   Actions-trigger token used for the cron-job.org integration — that one
+   only has Actions permission and won't work here.)
+2. Paste it into the "GitHub token" field on the dashboard and click **Save
+   token** — it's stored only in your browser's local storage and used only
+   for direct calls to `api.github.com`; it's never embedded in the page or
+   sent anywhere else.
+3. Toggle companies on/off, remove them, or use the "Add a company" form, then
+   click **Save changes to GitHub**. The change commits straight to
+   `companies.json` and takes effect on the next run (~10 minutes).
+
+Since this dashboard is publicly hosted, anyone can *view* this section, but
+only someone with a valid write-scoped token can actually save changes.
+
 ## Adding future job categories
 
 Flip `"enabled": true` in `job_monitor/config/roles.json` for UX Researcher,
