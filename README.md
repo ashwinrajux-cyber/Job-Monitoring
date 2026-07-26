@@ -39,7 +39,7 @@ job_monitor/
   scrapers/                 # one module per ATS + generic HTML fallback
   filters/match.py           # title -> category matching
   storage/db.py               # SQLite schema + dedup logic
-  notify/ntfy.py                # push notification sender
+  notify/telegram.py             # push notification sender
   dashboard/generate.py          # renders docs/index.html
   main.py                          # one full monitoring cycle
 data/jobs.db                # SQLite DB (committed so state survives between runs)
@@ -56,11 +56,12 @@ matched, and stored — e.g. Notion's "Product Designer" and Salesforce's "Sr
 Product Designer" and "Senior Product Designer - Design Systems". Lever
 briefly returned errors for every board while testing (an external outage,
 not a code issue — the same Lever scraper successfully parsed real data
-earlier in the same session). Push notifications were also confirmed
-end-to-end via a real ntfy.sh test message. The current `data/jobs.db` and
-`docs/index.html` in this repo are the real output of that test run — replace
-`config/companies.json` with your real list whenever you're ready and the
-next run picks it up automatically.
+earlier in the same session). Notifications now go through Telegram (see
+setup step 2) instead of ntfy — switched after initial testing since Telegram
+is official, free, has no ToS risk, and keeps a permanent chat history for
+free. The current `data/jobs.db` and `docs/index.html` in this repo are real
+output from that earlier test run — replace `config/companies.json` with your
+real list whenever you're ready and the next run picks it up automatically.
 
 ## Setup steps (do these in order)
 
@@ -85,24 +86,25 @@ git push -u origin main
 (Tell me your GitHub username/repo name if you'd like me to drive this instead —
 I can install the `gh` CLI and run it here once you `gh auth login`.)
 
-### 2. Set your ntfy topic
+### 2. Set up Telegram notifications
 
-Notifications use [ntfy.sh](https://ntfy.sh) — free, no account needed. A
-topic name is just a shared secret string; anyone who knows it can read your
-notifications, so pick something unguessable. I generated one during testing:
+Notifications go through the official, free Telegram Bot API — no ToS risk,
+no app to install beyond Telegram itself.
 
-```
-job-monitor-1ca8dd8d048f
-```
-
-You can use that one or make your own (e.g. `job-monitor-<random string>`).
-Then:
-
-- Install the **ntfy** app ([iOS](https://apps.apple.com/app/ntfy/id1625396347) /
-  [Android](https://play.google.com/store/apps/details?id=io.heckel.ntfy)),
-  open it, and subscribe to your topic name.
-- In your GitHub repo: **Settings → Secrets and variables → Actions → New
-  repository secret**, name it `NTFY_TOPIC`, value = your topic name.
+1. In Telegram, message **@BotFather** → send `/newbot` → give it a name and
+   a username (must end in `bot`, e.g. `my_job_alerts_bot`). It replies with a
+   **bot token** (looks like `123456789:AAExxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`).
+2. Open a chat with your new bot (search its username) and send it any
+   message, e.g. "hi" — bots can't message you first, so this step is
+   required once.
+3. In your browser, visit
+   `https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates` (replace
+   `<YOUR_TOKEN>` with your actual token). You'll see JSON containing
+   `"chat":{"id": 123456789, ...}` — that number is your **chat id**.
+4. In your GitHub repo: **Settings → Secrets and variables → Actions → New
+   repository secret**, add two secrets:
+   - `TELEGRAM_BOT_TOKEN` = the token from step 1
+   - `TELEGRAM_CHAT_ID` = the number from step 3
 
 ### 3. Enable GitHub Pages (for the dashboard)
 
@@ -158,12 +160,13 @@ Scaling to hundreds of entries requires no code changes.
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+export TELEGRAM_BOT_TOKEN=your-token
+export TELEGRAM_CHAT_ID=your-chat-id
 python -m job_monitor.main
 ```
 
-This runs one full cycle against whatever's in `companies.json` right now,
-using your local `NTFY_TOPIC` env var if set. Useful for testing config
-changes before they go live on the schedule.
+This runs one full cycle against whatever's in `companies.json` right now.
+Useful for testing config changes before they go live on the schedule.
 
 ## Search & filtering
 

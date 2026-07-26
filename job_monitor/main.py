@@ -25,7 +25,7 @@ sys.path.insert(0, str(ROOT))
 from job_monitor.scrapers import fetch_jobs  # noqa: E402
 from job_monitor.filters.match import match_category  # noqa: E402
 from job_monitor.storage import db  # noqa: E402
-from job_monitor.notify import ntfy  # noqa: E402
+from job_monitor.notify import telegram  # noqa: E402
 from job_monitor.dashboard.generate import render  # noqa: E402
 
 MAX_ATTEMPTS = 2
@@ -90,7 +90,7 @@ def process_company(conn, company, categories):
         if baseline_done:
             job_with_source = dict(job, source=source_label)
             category_label = next((c["label"] for c in categories if c["key"] == category), category)
-            success, notify_err = ntfy.send(name, job_with_source, category_label, now_local_display())
+            success, notify_err = telegram.send(name, job_with_source, category_label, now_local_display())
             db.mark_notified(conn, job_id, now_iso(), success, notify_err)
             if success:
                 notified_count += 1
