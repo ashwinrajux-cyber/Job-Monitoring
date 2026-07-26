@@ -220,7 +220,7 @@ function renderJobs() {
   const tbody = document.querySelector('#jobs-table tbody');
   tbody.innerHTML = rows.map(j => `
     <tr>
-      <td>${escapeHtml(j.first_seen_at || '')}</td>
+      <td>${escapeHtml(formatTs(j.first_seen_at))}</td>
       <td>${escapeHtml(j.company_name || '')}</td>
       <td>${escapeHtml(j.title || '')}</td>
       <td>${escapeHtml(j.location || '—')}</td>
@@ -237,7 +237,7 @@ function renderNotifications() {
   const tbody = document.querySelector('#notif-table tbody');
   tbody.innerHTML = NOTIFICATIONS.map(n => `
     <tr>
-      <td>${escapeHtml(n.sent_at || '')}</td>
+      <td>${escapeHtml(formatTs(n.sent_at))}</td>
       <td>${escapeHtml(n.company_name || '')}</td>
       <td>${escapeHtml(n.title || '')}</td>
       <td>${n.success ? '<span class="badge ok">sent</span>' : '<span class="badge error">failed</span>'}</td>
@@ -252,10 +252,17 @@ function renderCompanies() {
       <td>${escapeHtml(c.name || '')}</td>
       <td>${escapeHtml(c.source_type || '')}</td>
       <td><span class="badge ${c.status}">${escapeHtml(c.status)}</span></td>
-      <td>${escapeHtml(c.last_checked_at || '—')}</td>
-      <td>${escapeHtml(c.last_success_at || '—')}</td>
+      <td>${escapeHtml(formatTs(c.last_checked_at))}</td>
+      <td>${escapeHtml(formatTs(c.last_success_at))}</td>
       <td>${escapeHtml(c.last_error || '—')}</td>
     </tr>`).join('');
+}
+
+function formatTs(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleString(undefined, {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'});
 }
 
 function escapeHtml(s) {
@@ -276,6 +283,16 @@ renderCompanies();
 """
 
 
+def _format_ts(iso):
+    if not iso:
+        return "—"
+    try:
+        dt = datetime.fromisoformat(iso)
+        return dt.strftime("%b %d, %I:%M %p UTC")
+    except ValueError:
+        return iso
+
+
 def render(conn, output_path):
     stats = db.get_stats(conn)
     jobs = db.get_recent_jobs(conn, limit=500)
@@ -288,7 +305,7 @@ def render(conn, output_path):
     html = html.replace("__ACTIVE_COMPANIES__", str(stats["active_companies"]))
     html = html.replace("__ERROR_COMPANIES__", str(stats["error_companies"]))
     html = html.replace("__ERROR_CLASS__", "crit" if stats["error_companies"] else "")
-    html = html.replace("__LAST_SUCCESS__", stats["last_success_at"] or "—")
+    html = html.replace("__LAST_SUCCESS__", _format_ts(stats["last_success_at"]))
     html = html.replace("__TOTAL_JOBS__", str(stats["total_jobs"]))
     html = html.replace("__TOTAL_NOTIFIED__", str(stats["total_notified"]))
     html = html.replace("__JOBS_JSON__", json.dumps(jobs).replace("</script>", "<\\/script>"))

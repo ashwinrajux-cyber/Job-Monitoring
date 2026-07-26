@@ -128,13 +128,13 @@ footer { color: var(--muted); font-size: 12px; margin-top: 8px; }
 </head>
 <body>
 <h1>Job Monitor Dashboard</h1>
-<div class="subtitle">Generated 2026-07-26 15:19 UTC</div>
+<div class="subtitle">Generated 2026-07-26 16:07 UTC</div>
 
 <div class="stats">
   <div class="tile"><div class="value">122</div><div class="label">Companies monitored</div></div>
   <div class="tile accent"><div class="value">117</div><div class="label">Healthy right now</div></div>
   <div class="tile crit"><div class="value">5</div><div class="label">Companies with errors</div></div>
-  <div class="tile"><div class="value">2026-07-26T15:19:50.411902+00:00</div><div class="label">Last successful check</div></div>
+  <div class="tile"><div class="value">Jul 26, 03:19 PM UTC</div><div class="label">Last successful check</div></div>
   <div class="tile accent"><div class="value">52</div><div class="label">Matching jobs detected (all-time)</div></div>
   <div class="tile accent"><div class="value">1</div><div class="label">Notifications sent</div></div>
 </div>
@@ -209,7 +209,7 @@ function renderJobs() {
   const tbody = document.querySelector('#jobs-table tbody');
   tbody.innerHTML = rows.map(j => `
     <tr>
-      <td>${escapeHtml(j.first_seen_at || '')}</td>
+      <td>${escapeHtml(formatTs(j.first_seen_at))}</td>
       <td>${escapeHtml(j.company_name || '')}</td>
       <td>${escapeHtml(j.title || '')}</td>
       <td>${escapeHtml(j.location || '—')}</td>
@@ -226,7 +226,7 @@ function renderNotifications() {
   const tbody = document.querySelector('#notif-table tbody');
   tbody.innerHTML = NOTIFICATIONS.map(n => `
     <tr>
-      <td>${escapeHtml(n.sent_at || '')}</td>
+      <td>${escapeHtml(formatTs(n.sent_at))}</td>
       <td>${escapeHtml(n.company_name || '')}</td>
       <td>${escapeHtml(n.title || '')}</td>
       <td>${n.success ? '<span class="badge ok">sent</span>' : '<span class="badge error">failed</span>'}</td>
@@ -241,10 +241,17 @@ function renderCompanies() {
       <td>${escapeHtml(c.name || '')}</td>
       <td>${escapeHtml(c.source_type || '')}</td>
       <td><span class="badge ${c.status}">${escapeHtml(c.status)}</span></td>
-      <td>${escapeHtml(c.last_checked_at || '—')}</td>
-      <td>${escapeHtml(c.last_success_at || '—')}</td>
+      <td>${escapeHtml(formatTs(c.last_checked_at))}</td>
+      <td>${escapeHtml(formatTs(c.last_success_at))}</td>
       <td>${escapeHtml(c.last_error || '—')}</td>
     </tr>`).join('');
+}
+
+function formatTs(iso) {
+  if (!iso) return '—';
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleString(undefined, {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'});
 }
 
 function escapeHtml(s) {
