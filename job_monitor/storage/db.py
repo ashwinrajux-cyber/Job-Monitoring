@@ -125,12 +125,24 @@ def insert_job(conn, company_name, job, category, source, now_iso):
 
 
 def mark_notified(conn, job_id, now_iso, success, error=None):
-    conn.execute("UPDATE jobs SET notified=1 WHERE id=?", (job_id,))
+    if success:
+        conn.execute("UPDATE jobs SET notified=1 WHERE id=?", (job_id,))
     conn.execute(
         "INSERT INTO notifications (job_id, sent_at, success, error) VALUES (?, ?, ?, ?)",
         (job_id, now_iso, 1 if success else 0, error),
     )
     conn.commit()
+
+
+def get_unnotified_jobs(conn):
+    """Jobs where a notification was attempted (so NOT a baseline job, which never
+    attempts one at all) but every attempt so far has failed - candidates for retry."""
+    rows = conn.execute(
+        """SELECT * FROM jobs
+           WHERE notified=0
+           AND EXISTS (SELECT 1 FROM notifications n WHERE n.job_id = jobs.id)"""
+    ).fetchall()
+    return [dict(r) for r in rows]
 
 
 # ---- read helpers for the dashboard ----

@@ -105,6 +105,31 @@ def process_company(conn, company, categories):
     return {"company": name, "new_jobs": new_count, "notified": notified_count, "error": None}
 
 
+def retry_failed_notifications(conn, categories):
+    """Jobs whose notification failed on a prior run (e.g. a transient Telegram
+    API error) never get reprocessed by the main per-company loop, since dedup
+    treats them as already-seen. Give every such job one more attempt each run."""
+    pending = db.get_unnotified_jobs(conn)
+    sent = 0
+    for job in pending:
+        category_label = next((c["label"] for c in categories if c["key"] == job["category"]), job["category"])
+        job_for_notify = {
+            "title": job["title"],
+            "location": job["location"],
+            "employment_type": job["employment_type"],
+            "experience": job["experience"],
+            "url": job["url"],
+            "source": job["source"],
+        }
+        success, err = telegram.send(job["company_name"], job_for_notify, category_label, now_local_display())
+        db.mark_notified(conn, job["id"], now_iso(), success, err)
+        if success:
+            sent += 1
+        else:
+            print(f"[RETRY-NOTIFY-FAIL] {job['company_name']} / {job['title']}: {err}")
+    return len(pending), sent
+
+
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     DASHBOARD_DIR.mkdir(parents=True, exist_ok=True)
@@ -125,14 +150,18 @@ def main():
             traceback.print_exc()
             results.append({"company": company.get("name"), "new_jobs": 0, "notified": 0, "error": "unexpected failure"})
 
+    retried_count, retried_sent = retry_failed_notifications(conn, categories)
+
     render(conn, str(DASHBOARD_DIR / "index.html"), companies_config=companies)
     conn.close()
 
     total_new = sum(r["new_jobs"] for r in results)
-    total_notified = sum(r["notified"] for r in results)
+    total_notified = sum(r["notified"] for r in results) + retried_sent
     errors = [r for r in results if r["error"]]
     print(f"\nRun complete: {len(results)} companies checked, {total_new} new matching job(s), "
           f"{total_notified} notification(s) sent, {len(errors)} error(s).")
+    if retried_count:
+        print(f"Retried {retried_count} previously-failed notification(s), {retried_sent} succeeded this time.")
     if errors:
         for r in errors:
             print(f"  - {r['company']}: {r['error']}")
