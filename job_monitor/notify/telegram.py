@@ -50,11 +50,21 @@ def format_message(company_name, job, category_label, detected_at_local):
     return "\n".join(lines)
 
 
+def _redact(message, token):
+    """Strip the bot token out of an error string before it's logged/persisted -
+    request errors (e.g. from raise_for_status) embed the full URL, token included."""
+    if token and message:
+        message = message.replace(token, "<redacted>")
+    return message
+
+
 def send(company_name, job, category_label, detected_at_local):
     """Send one push notification for a single matching job. Returns (success, error)."""
     text = format_message(company_name, job, category_label, detected_at_local)
+    token = None
     try:
-        url = f"{API_BASE}/bot{_bot_token()}/sendMessage"
+        token = _bot_token()
+        url = f"{API_BASE}/bot{token}/sendMessage"
         payload = {
             "chat_id": _chat_id(),
             "text": text,
@@ -62,10 +72,19 @@ def send(company_name, job, category_label, detected_at_local):
             "disable_web_page_preview": True,
         }
         resp = requests.post(url, json=payload, timeout=TIMEOUT)
+        try:
+            data = resp.json()
+        except ValueError:
+            data = {}
+        if data.get("ok"):
+            return True, None
+        # Telegram's error responses are valid JSON with a real `description`
+        # even on 4xx status - read that before falling back to a generic
+        # "N Client Error" message from raise_for_status.
+        description = data.get("description")
+        if description:
+            return False, description
         resp.raise_for_status()
-        data = resp.json()
-        if not data.get("ok"):
-            return False, data.get("description", "unknown Telegram API error")
-        return True, None
+        return False, "unknown Telegram API error"
     except Exception as e:  # noqa: BLE001 - record any failure and keep going
-        return False, str(e)
+        return False, _redact(str(e), token)

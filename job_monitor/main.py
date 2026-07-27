@@ -8,6 +8,7 @@ Run manually with `python -m job_monitor.main`, or on a schedule via
 laptop).
 """
 import json
+import os
 import sys
 import time
 import traceback
@@ -30,6 +31,12 @@ from job_monitor.dashboard.generate import render  # noqa: E402
 
 MAX_ATTEMPTS = 2
 RETRY_DELAY_SECONDS = 3
+MAX_NOTIFY_ATTEMPTS = 5
+
+# Set DRY_RUN=1 to exercise scraping/filtering/dedup/dashboard without ever
+# contacting Telegram or mutating notification state - safe for local testing
+# against the real companies.json and jobs.db.
+DRY_RUN = os.environ.get("DRY_RUN", "").strip().lower() in ("1", "true", "yes")
 
 
 def now_iso():
@@ -90,12 +97,15 @@ def process_company(conn, company, categories):
         if baseline_done:
             job_with_source = dict(job, source=source_label)
             category_label = next((c["label"] for c in categories if c["key"] == category), category)
-            success, notify_err = telegram.send(name, job_with_source, category_label, now_local_display())
-            db.mark_notified(conn, job_id, now_iso(), success, notify_err)
-            if success:
-                notified_count += 1
+            if DRY_RUN:
+                print(f"[DRY-RUN] Would notify: {name} / {job['title']}")
             else:
-                print(f"[NOTIFY-FAIL] {name} / {job['title']}: {notify_err}")
+                success, notify_err = telegram.send(name, job_with_source, category_label, now_local_display())
+                db.mark_notified(conn, job_id, now_iso(), success, notify_err)
+                if success:
+                    notified_count += 1
+                else:
+                    print(f"[NOTIFY-FAIL] {name} / {job['title']}: {notify_err}")
 
     if not baseline_done:
         db.mark_baseline_done(conn, name)
@@ -108,11 +118,16 @@ def process_company(conn, company, categories):
 def retry_failed_notifications(conn, categories):
     """Jobs whose notification failed on a prior run (e.g. a transient Telegram
     API error) never get reprocessed by the main per-company loop, since dedup
-    treats them as already-seen. Give every such job one more attempt each run."""
-    pending = db.get_unnotified_jobs(conn)
+    treats them as already-seen. Give every such job one more attempt each run,
+    up to MAX_NOTIFY_ATTEMPTS total - past that they're treated as permanently
+    failed (see get_permanently_failed_jobs) rather than retried forever."""
+    pending = db.get_unnotified_jobs(conn, max_attempts=MAX_NOTIFY_ATTEMPTS)
     sent = 0
     for job in pending:
         category_label = next((c["label"] for c in categories if c["key"] == job["category"]), job["category"])
+        if DRY_RUN:
+            print(f"[DRY-RUN] Would retry-notify: {job['company_name']} / {job['title']}")
+            continue
         job_for_notify = {
             "title": job["title"],
             "location": job["location"],
@@ -151,6 +166,7 @@ def main():
             results.append({"company": company.get("name"), "new_jobs": 0, "notified": 0, "error": "unexpected failure"})
 
     retried_count, retried_sent = retry_failed_notifications(conn, categories)
+    stuck = db.get_permanently_failed_jobs(conn, MAX_NOTIFY_ATTEMPTS)
 
     render(conn, str(DASHBOARD_DIR / "index.html"), companies_config=companies)
     conn.close()
@@ -158,6 +174,8 @@ def main():
     total_new = sum(r["new_jobs"] for r in results)
     total_notified = sum(r["notified"] for r in results) + retried_sent
     errors = [r for r in results if r["error"]]
+    if DRY_RUN:
+        print("\n[DRY-RUN] No notifications were actually sent and no notification state was changed.")
     print(f"\nRun complete: {len(results)} companies checked, {total_new} new matching job(s), "
           f"{total_notified} notification(s) sent, {len(errors)} error(s).")
     if retried_count:
@@ -165,6 +183,11 @@ def main():
     if errors:
         for r in errors:
             print(f"  - {r['company']}: {r['error']}")
+    if stuck:
+        print(f"\n[NOTIFY-GIVE-UP] {len(stuck)} job(s) exceeded {MAX_NOTIFY_ATTEMPTS} failed notification "
+              f"attempt(s) and will no longer be retried:")
+        for j in stuck:
+            print(f"  - {j['company_name']} / {j['title']} (id={j['id']})")
 
 
 if __name__ == "__main__":

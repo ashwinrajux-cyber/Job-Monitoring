@@ -134,13 +134,32 @@ def mark_notified(conn, job_id, now_iso, success, error=None):
     conn.commit()
 
 
-def get_unnotified_jobs(conn):
+def get_unnotified_jobs(conn, max_attempts=None):
     """Jobs where a notification was attempted (so NOT a baseline job, which never
-    attempts one at all) but every attempt so far has failed - candidates for retry."""
+    attempts one at all) but every attempt so far has failed - candidates for retry.
+    If max_attempts is given, jobs that have already failed that many times are
+    excluded - they're treated as permanently failed rather than retried forever."""
+    query = """SELECT j.* FROM jobs j
+               JOIN (SELECT job_id, COUNT(*) AS attempts FROM notifications GROUP BY job_id) n
+                 ON n.job_id = j.id
+               WHERE j.notified = 0"""
+    params = []
+    if max_attempts is not None:
+        query += " AND n.attempts < ?"
+        params.append(max_attempts)
+    rows = conn.execute(query, params).fetchall()
+    return [dict(r) for r in rows]
+
+
+def get_permanently_failed_jobs(conn, max_attempts):
+    """Jobs that hit the retry cap and will no longer be retried by
+    get_unnotified_jobs - surfaced so they aren't silently dropped."""
     rows = conn.execute(
-        """SELECT * FROM jobs
-           WHERE notified=0
-           AND EXISTS (SELECT 1 FROM notifications n WHERE n.job_id = jobs.id)"""
+        """SELECT j.* FROM jobs j
+           JOIN (SELECT job_id, COUNT(*) AS attempts FROM notifications GROUP BY job_id) n
+             ON n.job_id = j.id
+           WHERE j.notified = 0 AND n.attempts >= ?""",
+        (max_attempts,),
     ).fetchall()
     return [dict(r) for r in rows]
 
