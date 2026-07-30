@@ -44,7 +44,7 @@
     {
       "key": "ux_researcher",
       "label": "UX Researcher",
-      "enabled": false,
+      "enabled": true,
       "include_keywords": [
         "ux researcher",
         "user researcher",
